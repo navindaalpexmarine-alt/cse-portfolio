@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSE Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="lang-bar">
+  <button type="button" class="lang-btn" data-lang="si">සිංහල</button>
+  <button type="button" class="lang-btn active" data-lang="en">EN</button>
+</div>
+
+<div class="wrap">
+  <header class="app-head">
+    <div>
+      <h1>CSE Portfolio</h1>
+      <div class="user-chip" id="userEmail">—</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <button class="btn primary" id="refreshBtn" data-i18n="updatePrices">↻ Prices</button>
+      <button class="btn ghost" id="logoutBtn" data-i18n="logout">Sign out</button>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-view="portfolio" data-i18n="portfolio">Portfolio</button>
+    <button class="nav-btn" data-view="div" data-i18n="dividends">Dividends</button>
+    <button class="nav-btn" data-view="news" data-i18n="news">News</button>
+  </nav>
+
+  <div class="tip">
+    <b>Cloud save:</b> ඔයාගේ portfolio database එකේ save වෙනවා — device මාරු කළත් තියෙනවා.
+    Live prices: CSE API (server නැත්නම් manual type කරන්න පුළුවන්).
+  </div>
+
+  <div class="view on" id="view-portfolio">
+    <div class="summary" id="summaryCards"></div>
+    <div class="panel">
+      <h2 data-i18n="portfolio">Portfolio</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th><th>Balance</th><th>Avg</th><th>B.E.S</th><th>Cost</th>
+              <th>Market</th><th>Value</th><th>G/L</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="toolbar">
+        <button class="btn primary" id="addBtn" data-i18n="addShare">+ Share</button>
+        <span style="font-size:12px;color:var(--muted)" id="saveStatus">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="view-div">
+    <div class="panel">
+      <h2 data-i18n="dividends">Dividends</h2>
+      <p class="coming">Seasonality calendar + DPS tracking — <strong>Phase 2</strong> එකේ full UI එකතු වෙනවා.
+        දැන් local tool එකේ dividend tab එක use කරන්න පුළුවන්.</p>
+    </div>
+  </div>
+
+  <div class="view" id="view-news">
+    <div class="panel">
+      <h2 data-i18n="news">News</h2>
+      <p class="coming">Market news feed — <strong>Phase 2</strong>.
+        CSE: <a href="https://www.cse.lk/announcements/?category=CASH+DIVIDEND" target="_blank" rel="noopener" style="color:var(--gold)">Cash dividends</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/portfolio.js"></script>
+</body>
+</html>
